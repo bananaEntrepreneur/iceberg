@@ -5,6 +5,7 @@ import Model.gamefield.Direction;
 import Model.gamefield.GameField;
 import Model.gamefield.Seeder;
 import Model.units.Box;
+import Model.units.Iceberg;
 
 import java.awt.*;
 import java.awt.geom.Dimension2D;
@@ -36,5 +37,12 @@ public class SimpleSeeder extends Seeder {
         underRobotCell = underRobotCell.getNeighbor( Direction.south()) ;
 
         underRobotCell.putUnit( new Box() );
+
+        Cell icebergCell = field.getCell(2, 1);
+        if (icebergCell.isEmpty()) {
+            Iceberg iceberg = new Iceberg();
+            icebergCell.putUnit(iceberg);
+            iceberg.applyCoolingEffect(icebergCell);
+        }
     }
 }
